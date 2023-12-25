@@ -32,7 +32,7 @@ font-family: Verdana;
     text-align: center;
     padding: 70px;
     bottom: 480px;
-
+    list-style-position: inside;
 }
 #Right
 {
@@ -56,7 +56,14 @@ font-family: Verdana;
     background-color: #D0B6A8;
     text-align: center;
     padding: 30px;
+    
 }
+#bottom button
+{
+    background-color:#2F180C ;
+    color: khaki;
+}
+
 footer
 {
     height: 60px;

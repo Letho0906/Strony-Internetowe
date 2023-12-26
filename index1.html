@@ -27,16 +27,36 @@ TU MA BYĆ ZDJĘCIE
 </div>
 <div id="bottom">
 <h1>Zarezerwuj stolik on-line</h1>
-<form>
+<form method = "POST">
     <label for="date">Data (format rrrr-mm-dd):</label><br>
-    <input type="text" id="date" name="data"><br>
+    <input type="text" id="date" name="date"><br>
     <label for="pn">Ile osób?:</label><br>
-    <input type="number" id="pn" name="liczba osób"><br>
+    <input type="number" id="pn" name="pn"><br>
     <label for="phone">Twój numer telefonu:</label><br>
-    <input type="text" id="phone" name="telefon"><br>
+    <input type="text" id="phone" name="phone"><br>
     <input type="checkbox"> ZGADZASZ SIĘ NA DANE OSOBOWE WARIACIE? <br>
-    <button type="submit">WYCZYŚĆ</button> <button type="submit">ZAREZERWUJ</button>
+    <button type="reset">WYCZYŚĆ</button> <button type="submit">ZAREZERWUJ</button>
 </form>
+<?php
+$pol = new mysqli('localhost:8012','root','','rest') or die('No nie da się');
+
+mysqli_set_charset($pol, "utf8");
+
+$date =$_POST['date'];
+$pn =$_POST['pn'];
+$phone =$_POST['phone'];
+
+$polec = "insert into rest values('default','$date','$pn','$phone')";
+
+$zap=$pol->query($polec);
+if($zap == true)
+    print 'rekord dodany';
+else
+    print 'blad';
+$pol->close();
+
+?>
+
 </div>
 <footer>
     Strone wykonał: 0000000000000

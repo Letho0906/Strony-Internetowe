@@ -38,7 +38,7 @@ TU MA BYĆ ZDJĘCIE
     <button type="reset">WYCZYŚĆ</button> <button type="submit">ZAREZERWUJ</button>
 </form>
 <?php
-$pol = new mysqli('localhost:8012','root','','rest') or die('No nie da się');
+$pol = new mysqli('localhost','root','','rest', 3310) or die('No nie da się');
 
 mysqli_set_charset($pol, "utf8");
 

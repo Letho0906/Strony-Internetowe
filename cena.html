@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="top">
+       <h1> Malowanie pokoi i biur </h1>
+    </div>
+        <div class="mid" id="left">
+<h1><b>Menu</b></h1>
+<ul>
+    <li><a href="index.html">Mieszamy</a></li>
+    <li><a href="cena.html">Wyceniamy</a></li>
+</ul>
+        </div>
+        <div class="mid" id="middle">
+            <h1>Zapotrzebowanie na farbę</h1>
+            
+            <action="" method="get" name="form">
+            Powierzchnia malowania (m<sup>2</sup>):
+            <input type="text" name="inputbox" id="chuj">
+            <button type="button" onclick="kutas()">Policz</button> <br>
+            <div id="macica"></div>
+            
+            <script>
+                function kutas() {
+                    var penis = document.getElementById('chuj').value;
+                    if(penis % 4 === 0)
+                    {
+                       document.getElementById('macica').innerHTML = "Liczba potrzebnych puszek: " + penis/4;
+                    }
+                    else if (penis % 4 >= 1)
+                    {
+                        var cipa = Math.ceil(penis / 4);
+                        document.getElementById('macica').innerHTML = "Liczba potrzebnych puszek: " + cipa;
+                    }
+
+                }
+            </script>
+            </form>
+        </div>
+        <div class="mid" id="right">
+OBRTAZEK
+        </div>
+
+        <footer>
+            <b id="XD">Malarz</b> <br>
+            Strone opracował: 000000000000
+        </footer>
+
+</body>
+</html>

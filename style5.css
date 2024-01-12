@@ -1,0 +1,60 @@
+#rtop
+{
+    float: right;
+    width: 60%;
+    height: 250px;
+    background-color: tan;
+}
+#rbottom
+{
+    float: right;
+    width: 60%;
+    height: 250px;
+    background-color: tan;
+}
+#left
+{
+    
+    width: 40%;
+    background-color: tan;
+    height: 500px;
+}
+footer
+{
+    float: left;
+    background-color: saddlebrown;
+    color: white;
+    width: 100%;
+}
+*
+{
+font-family: Garamond;
+margin: 0;
+}
+header
+{
+    background-color: saddlebrown;
+    height: 50px;
+    color: white;
+    text-align: center;
+}
+img
+{
+    height: 500px;
+}
+form
+{
+    background-color: saddlebrown;
+    color: white;
+    padding: 10px 30px 10px 30px;
+    width: 300px;
+}
+input ,button
+{
+    margin: 5px;
+}
+
+p::before
+{
+    content: 'STATUS:';
+}

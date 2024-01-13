@@ -1,66 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style1.css">
-    <title>Document</title>
+    <title>Forum o psach</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Forum wielbicieli psów</h1>
+    </header>
+    <section class="mid" id="rtop">
+        <br>
+        <h2>Zapisz się</h2>
+        <br>
+        <form method="post" action="">
+            login:
+            <input type="text" name="login"> <br>
+            haslo:
+            <input type="password" name="haslo"> <br>
+            powtorz haslo
+            <input type="password" name="haslo2"> <br>
+            <button type="submit">Zapisz</button>
+         
+
+        </form>
+        <br>
+        <p>
+                <?php
+                    $pol = new mysqli('localhost','root','','psy', 3310) or die('spierdalaj');
+                    $login = $_POST['login'];
+                    $haslo = $_POST['haslo'];
+                    $haslo2 = $_POST['haslo2'];
+                    $error = false;
+
+                    if ($login == "" || $haslo == "" || $haslo2 == "")
+                    {
+                        echo "Wypełnij wszystkie pola";
+                        $error = true;
+                    }
+                    
+
+                    $zap1 = mysqli_query($pol, "Select login from uzytkownicy;");
+
+                    
+
+                    while($li = mysqli_fetch_row($zap1))
+                    {
+                    if($login == $li[0])
+                    {
+                        echo "login występuje w bazie danych, konto nie zostało dodane";
+                        $error = true;
+                        break;
+                    }
+                    }
+                    if($haslo != $haslo2){
+                        echo "„hasła nie są takie same, konto nie zostało dodane";
+                        $error = true;
+                    }
+
+
+                    $chuj = sha1($haslo);
+
+                    if($error == false)
+                    {
+                    mysqli_query($pol, "insert into uzytkownicy values(default, '$login','$chuj')");
+                    echo "Konto zostało dodane";
+                    }
+
+
+                    mysqli_close($pol)
+                ?>
+            </p>
+
+    </section>
+    <section class="mid" id="rbottom">
+        <h2>Zapraszmy wszystkich</h2>
+        <br><br>
+        <ol>
+            <li>wlaścicieli psów</li>
+            <li>weterynarzy</li>
+            <li>tych, co lubią kupić psa</li>
+            <li>tych, co lubią psy</li>
+        </ol>
+<br>
+        <a href="REGULAMIN.HTML">Przeczytaj regulamin forum</a>
+    </section>
+    <section class="mid" id="left">
+        <img src="obraz.jpg" alt="foksterier">
+    </section>
+    <footer>
+        Stronę wykonał: 00000000000
+    </footer>
     
-<div id = "Top">
-
- Witamy w restauracji "Wszystkie smaki"
-</div>
-
-<div class="Middle" id = "Right">
-TU MA BYĆ ZDJĘCIE
-</div>
-<div class="Middle" id = "Left">
-<b>U nas dobrze zjesz!</b> 
-<ol>
-    <li>Obiady od 40 zł</li>
-    <li>Przekąski do 10 zł</li>
-    <li>Kolacje od 20 zł</li>
-</ol>
-</div>
-<div id="bottom">
-<h1>Zarezerwuj stolik on-line</h1>
-<form method = "POST">
-    <label for="date">Data (format rrrr-mm-dd):</label><br>
-    <input type="text" id="date" name="date"><br>
-    <label for="pn">Ile osób?:</label><br>
-    <input type="number" id="pn" name="pn"><br>
-    <label for="phone">Twój numer telefonu:</label><br>
-    <input type="text" id="phone" name="phone"><br>
-    <input type="checkbox"> ZGADZASZ SIĘ NA DANE OSOBOWE WARIACIE? <br>
-    <button type="reset">WYCZYŚĆ</button> <button type="submit">ZAREZERWUJ</button>
-</form>
-<?php
-$pol = new mysqli('localhost','root','','rest', 3310) or die('No nie da się');
-
-mysqli_set_charset($pol, "utf8");
-
-$date =$_POST['date'];
-$pn =$_POST['pn'];
-$phone =$_POST['phone'];
-
-$polec = "insert into rest values('default','$date','$pn','$phone')";
-
-$zap=$pol->query($polec);
-if($zap == true)
-    print 'rekord dodany';
-else
-    print 'blad';
-$pol->close();
-
-?>
-
-</div>
-<footer>
-    Strone wykonał: 0000000000000
-</footer>
-
 </body>
 </html>

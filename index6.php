@@ -16,6 +16,32 @@
         <br>
         <h2>Ogłoszenia kategori książki</h2>
         <br>
+        <?php
+
+            $pol = mysqli_connect('localhost','root','','egzamin', 3310) or die('spierdalaj');
+                
+            $zap1 = mysqli_query($pol, "select id, tytul, tresc from ogloszenie where kategoria = 1;");
+            
+            
+            while($chuj = mysqli_fetch_array($zap1)){
+                $zap2 = mysqli_query($pol, "select u.telefon from ogloszenie as o left join uzytkownik as u on o.uzytkownik_id = u.id where o.id = $chuj[0];");
+                echo '<h3>';
+                echo $chuj[0];
+                echo $chuj[1];
+                echo '<br>';
+                echo '</h3>';
+                echo '<p>';
+                echo $chuj[2];
+                echo '</p>';
+                while ($penis = mysqli_fetch_array($zap2)){
+                echo '<p>';
+                echo $penis[0];
+                echo '</p>';
+
+                }
+            }
+            mysqli_close($pol);
+        ?>
     </section>
     <section id="left">
         <br>
